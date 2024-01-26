@@ -30,9 +30,9 @@ def move_databots(databots, iterations=10):
     return databots
 
 def perform_clustering(databots):
-    positions = np.array([db.position for db in databots])
+    polar_positions = np.array([db.to_polar() for db in databots])
     kmeans = KMeans(n_clusters=3, random_state=0)  # Assuming 3 clusters
-    kmeans.fit(positions)
+    kmeans.fit(polar_positions)
     return kmeans.labels_
 
 def simplified_pswarm_clustering(data):
