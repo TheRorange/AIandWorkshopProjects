@@ -11,6 +11,12 @@ class DataBot:
         self.position = position
         self.data_point = data_point
 
+    def to_polar(self):
+        x, y = self.position
+        radius = np.sqrt(x**2 + y**2)
+        angle = np.arctan2(y, x)
+        return radius, angle
+
 def initialize_databots(data):
     mds = MDS(n_components=2, random_state=0)
     reduced_data = mds.fit_transform(data)
